@@ -61,6 +61,7 @@ const PatientTableHeader = ({
       <style jsx>{`
         header {
           border-bottom: 1px solid #cccccc;
+          padding: 20px 0 0 20px;
         }
       `}</style>
     </header>

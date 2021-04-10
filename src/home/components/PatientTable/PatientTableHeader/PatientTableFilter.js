@@ -23,7 +23,7 @@ const PatientTableFilter = ({ title, setter, list, setPageIndex }) => {
       <style jsx>{`
         section {
           display: inline-block;
-          padding: 20px;
+          padding: 0 20px 20px 0;
         }
 
         section > select {
