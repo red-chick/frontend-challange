@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="container">
       <Head>
-        <title>환자 목록</title>
+        <title>환자 목록 페이지</title>
       </Head>
 
       <main>
