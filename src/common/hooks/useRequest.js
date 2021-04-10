@@ -1,6 +1,6 @@
 import useSwr from "swr";
 
-const baseUrl = "http://49.50.167.136:9871/api";
+const baseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
