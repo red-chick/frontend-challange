@@ -14,7 +14,7 @@ const PatientTableItemDetail = ({
         진단 정보:
         <br />
         {conditionList.map((condition, i) => (
-          <div>
+          <div key={i + condition}>
             {i + 1}. {condition}
           </div>
         ))}
