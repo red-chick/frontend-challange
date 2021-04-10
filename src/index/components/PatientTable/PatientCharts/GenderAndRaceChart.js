@@ -3,7 +3,6 @@ import PieChart from "../../../../common/components/PieChart";
 import { getMixTwoString } from "../../../../common/utils";
 
 const getGenderAndRaceCount = (stats, genderAndRaceList) => {
-  console.log("genderAndRaceList", genderAndRaceList);
   return stats.reduce((acc, cur) => {
     const newAcc = [...acc];
     const index = genderAndRaceList.indexOf(

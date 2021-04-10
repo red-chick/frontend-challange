@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const PatientTableHeader = ({
   ethnicityData,
   genderData,
@@ -106,4 +108,4 @@ const PatientTableHeader = ({
   );
 };
 
-export default PatientTableHeader;
+export default memo(PatientTableHeader);

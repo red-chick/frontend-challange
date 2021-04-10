@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const PatientTableFooter = ({
   data,
   pageIndex,
@@ -61,4 +63,4 @@ const PatientTableFooter = ({
   );
 };
 
-export default PatientTableFooter;
+export default memo(PatientTableFooter);

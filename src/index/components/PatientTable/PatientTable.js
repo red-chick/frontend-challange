@@ -99,6 +99,9 @@ const PatientTable = () => {
         ethnicityData={ethnicityData}
         genderData={genderData}
         raceData={raceData}
+        genderFilter={genderFilter}
+        raceFilter={raceFilter}
+        ethnicityFilter={ethnicityFilter}
       />
       <PatientTableView
         data={data}

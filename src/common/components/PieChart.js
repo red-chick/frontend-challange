@@ -6,14 +6,21 @@ Chart.register(ArcElement, PieController, Legend, Tooltip);
 
 const PieChart = ({ data }) => {
   const canvasDom = useRef(null);
+  const myChart = useRef(null);
 
   useEffect(() => {
-    const ctx = canvasDom.current.getContext("2d");
-    var myChart = new Chart(ctx, {
-      type: "pie",
-      data,
-    });
-  }, []);
+    const canvas = canvasDom.current;
+    const ctx = canvas.getContext("2d");
+    if (myChart.current) {
+      myChart.current.data = data;
+      myChart.current.update();
+    } else {
+      myChart.current = new Chart(ctx, {
+        type: "pie",
+        data,
+      });
+    }
+  }, [data]);
 
   return <canvas ref={canvasDom}></canvas>;
 };
