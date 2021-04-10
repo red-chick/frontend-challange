@@ -24,31 +24,43 @@ const PatientTableView = ({
       ) : (
         <table>
           <tr onClick={onClickTr}>
-            <th data-column="person_id">
-              환자 ID
-              {sortColumn === "person_id" && (orderDesc ? " ↑" : " ↓")}
-            </th>
-            <th data-column="gender">
-              성별
-              {sortColumn === "gender" && (orderDesc ? " ↑" : " ↓")}
-            </th>
-            <th data-column="birth">
-              생년월일
-              {sortColumn === "birth" && (orderDesc ? " ↑" : " ↓")}
-            </th>
-            <th>나이</th>
-            <th data-column="race">
-              인종
-              {sortColumn === "race" && (orderDesc ? " ↑" : " ↓")}
-            </th>
-            <th data-column="ethnicity">
-              민족
-              {sortColumn === "ethnicity" && (orderDesc ? " ↑" : " ↓")}
-            </th>
-            <th data-column="death">
-              사망 여부
-              {sortColumn === "death" && (orderDesc ? " ↑" : " ↓")}
-            </th>
+            <PatientTableTh
+              name="환자 ID"
+              column="person_id"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="성별"
+              column="gender"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="생년월일"
+              column="birth"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh name="나이" />
+            <PatientTableTh
+              name="인종"
+              column="race"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="민족"
+              column="ethnicity"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="사망 여부"
+              column="death"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
           </tr>
           {data.patient.list.map((patient) => (
             <tr key={patient.personID}>
@@ -75,7 +87,6 @@ const PatientTableView = ({
           border-collapse: collapse;
         }
 
-        main > table th,
         main > table td {
           padding: 10px;
           text-align: center;
@@ -86,6 +97,21 @@ const PatientTableView = ({
         }
       `}</style>
     </main>
+  );
+};
+
+const PatientTableTh = ({ name, column, sortColumn, orderDesc }) => {
+  return (
+    <th data-column={column}>
+      {name}
+      {column && sortColumn === column && (orderDesc ? " ↑" : " ↓")}
+      <style jsx>{`
+        th {
+          padding: 10px;
+          text-align: center;
+        }
+      `}</style>
+    </th>
   );
 };
 
