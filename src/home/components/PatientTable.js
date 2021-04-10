@@ -100,6 +100,7 @@ const PatientTable = () => {
         setSortColumn={setSortColumn}
         orderDesc={orderDesc}
         setOrderDesc={setOrderDesc}
+        rowSize={rowSize}
       />
       <PatientTableFooter
         data={data}

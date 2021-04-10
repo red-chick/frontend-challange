@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 
 import PatientTableItem from "./PatientTableView/PatientTableItem";
+import PatientTableSkeletonItem from "./PatientTableView/PatientTableSkeletonItem";
 import PatientTableTh from "./PatientTableView/PatientTableTh";
 
 const PatientTableView = ({
@@ -9,6 +10,7 @@ const PatientTableView = ({
   setSortColumn,
   orderDesc,
   setOrderDesc,
+  rowSize,
 }) => {
   const [patientDetails, setPatientDetails] = useState({});
 
@@ -48,63 +50,63 @@ const PatientTableView = ({
 
   return (
     <main>
-      {!data ? (
-        <div>로딩중입니다...</div>
-      ) : (
-        <table>
-          <thead>
-            <tr onClick={onClickTr}>
-              <PatientTableTh
-                name="환자 ID"
-                column="person_id"
-                sortColumn={sortColumn}
-                orderDesc={orderDesc}
-              />
-              <PatientTableTh
-                name="성별"
-                column="gender"
-                sortColumn={sortColumn}
-                orderDesc={orderDesc}
-              />
-              <PatientTableTh
-                name="생년월일"
-                column="birth"
-                sortColumn={sortColumn}
-                orderDesc={orderDesc}
-              />
-              <PatientTableTh name="나이" />
-              <PatientTableTh
-                name="인종"
-                column="race"
-                sortColumn={sortColumn}
-                orderDesc={orderDesc}
-              />
-              <PatientTableTh
-                name="민족"
-                column="ethnicity"
-                sortColumn={sortColumn}
-                orderDesc={orderDesc}
-              />
-              <PatientTableTh
-                name="사망 여부"
-                column="death"
-                sortColumn={sortColumn}
-                orderDesc={orderDesc}
-              />
-            </tr>
-          </thead>
-          <tbody>
-            {data.patient.list.map((patient) => (
-              <PatientTableItem
-                key={patient.personID}
-                patient={patient}
-                patientDetails={patientDetails}
-                onClickItem={onClickItem}
-              />
-            ))}
-          </tbody>
-        </table>
-      )}
+      <table>
+        <thead>
+          <tr onClick={onClickTr}>
+            <PatientTableTh
+              name="환자 ID"
+              column="person_id"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="성별"
+              column="gender"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="생년월일"
+              column="birth"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh name="나이" />
+            <PatientTableTh
+              name="인종"
+              column="race"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="민족"
+              column="ethnicity"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+            <PatientTableTh
+              name="사망 여부"
+              column="death"
+              sortColumn={sortColumn}
+              orderDesc={orderDesc}
+            />
+          </tr>
+        </thead>
+        <tbody>
+          {data
+            ? data.patient.list.map((patient) => (
+                <PatientTableItem
+                  key={patient.personID}
+                  patient={patient}
+                  patientDetails={patientDetails}
+                  onClickItem={onClickItem}
+                />
+              ))
+            : [...Array(rowSize).keys()].map((i) => (
+                <PatientTableSkeletonItem key={i} />
+              ))}
+        </tbody>
+      </table>
       <style jsx>{`
         main {
           padding: 0;

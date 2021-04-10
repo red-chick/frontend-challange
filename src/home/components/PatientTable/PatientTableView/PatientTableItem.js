@@ -7,7 +7,7 @@ const PatientTableItem = ({
 }) => {
   return (
     <>
-      <tr key={personID} data-id={personID} onClick={onClickItem}>
+      <tr data-id={personID} onClick={onClickItem}>
         <td>{personID}</td>
         <td>{gender}</td>
         <td>{birthDatetime}</td>
