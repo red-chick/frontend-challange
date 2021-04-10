@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const PatientTableView = ({ data, sortColumn, orderDesc }) => {
+const PatientTableView = ({
+  data,
+  sortColumn,
+  setSortColumn,
+  orderDesc,
+  setOrderDesc,
+}) => {
   const [patientDetails, setPatientDetails] = useState({});
 
   return (
@@ -9,7 +15,11 @@ const PatientTableView = ({ data, sortColumn, orderDesc }) => {
         <div>loading...</div>
       ) : (
         <table>
-          <tr onClick={onClickTr}>
+          <tr
+            onClick={(e) => {
+              onClickTr(e, sortColumn, setSortColumn, orderDesc, setOrderDesc);
+            }}
+          >
             <PatientTableTh
               name="환자 ID"
               column="person_id"
@@ -92,7 +102,7 @@ const PatientTableView = ({ data, sortColumn, orderDesc }) => {
       )}
       <style jsx>{`
         main {
-          padding: 10px;
+          padding: 0;
           height: 450px;
           overflow: auto;
         }
@@ -126,7 +136,7 @@ const PatientTableTh = ({ name, column, sortColumn, orderDesc }) => {
       {column && sortColumn === column && (orderDesc ? " ↑" : " ↓")}
       <style jsx>{`
         th {
-          padding: 10px;
+          padding: 20px 10px;
           text-align: center;
         }
       `}</style>
@@ -134,7 +144,7 @@ const PatientTableTh = ({ name, column, sortColumn, orderDesc }) => {
   );
 };
 
-const onClickTr = (e) => {
+const onClickTr = (e, sortColumn, setSortColumn, orderDesc, setOrderDesc) => {
   const { column } = e.target.dataset;
   if (column) {
     if (column === sortColumn) {

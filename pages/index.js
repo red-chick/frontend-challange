@@ -26,6 +26,10 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
+
+        main {
+          padding: 50px;
+        }
       `}</style>
     </div>
   );

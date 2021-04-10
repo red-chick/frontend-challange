@@ -90,7 +90,9 @@ const PatientTable = () => {
       <PatientTableView
         data={data}
         sortColumn={sortColumn}
+        setSortColumn={setSortColumn}
         orderDesc={orderDesc}
+        setOrderDesc={setOrderDesc}
       />
       <PatientTableFooter
         data={data}
@@ -101,9 +103,11 @@ const PatientTable = () => {
       />
       <style jsx>{`
         .container {
-          width: 80%;
+          display: inline-block;
+          width: 100%;
           border: 1px solid #cccccc;
           border-radius: 8px;
+          text-align: left;
         }
       `}</style>
     </section>
