@@ -13,6 +13,12 @@ const Home = () => {
         <PatientTable />
       </main>
 
+      <style>{`
+        main {
+          padding: 50px;
+        }
+      `}</style>
+
       <style jsx global>{`
         html,
         body {
@@ -27,8 +33,14 @@ const Home = () => {
           box-sizing: border-box;
         }
 
-        main {
-          padding: 50px;
+        select,
+        button {
+          width: 100px;
+          padding: 5px 0;
+        }
+
+        select::before {
+          padding-right: 5px;
         }
       `}</style>
     </div>

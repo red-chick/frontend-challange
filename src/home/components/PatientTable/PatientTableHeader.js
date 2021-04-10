@@ -19,7 +19,7 @@ const PatientTableHeader = ({
   return (
     <header>
       {genderData && (
-        <>
+        <section>
           성별:
           <select
             onChange={({ target: { value } }) => {
@@ -32,32 +32,36 @@ const PatientTableHeader = ({
                 <option key={gender}>{gender}</option>
               ))}
           </select>
-        </>
+        </section>
       )}
-      최소 나이:
-      <select
-        onChange={({ target: { value } }) => {
-          onChangeSelect(value, setAgeMinFilter);
-        }}
-      >
-        <option value={undefined}>미선택</option>
-        {[...Array(112).keys()].map((i) => (
-          <option key={i + 1}>{i + 1}</option>
-        ))}
-      </select>
-      최대 나이:
-      <select
-        onChange={({ target: { value } }) => {
-          onChangeSelect(value, setAgeMaxFilter);
-        }}
-      >
-        <option value={undefined}>미선택</option>
-        {[...Array(112).keys()].map((i) => (
-          <option key={i + 1}>{i + 1}</option>
-        ))}
-      </select>
+      <section>
+        최소 나이:
+        <select
+          onChange={({ target: { value } }) => {
+            onChangeSelect(value, setAgeMinFilter);
+          }}
+        >
+          <option value={undefined}>미선택</option>
+          {[...Array(112).keys()].map((i) => (
+            <option key={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+      </section>
+      <section>
+        최대 나이:
+        <select
+          onChange={({ target: { value } }) => {
+            onChangeSelect(value, setAgeMaxFilter);
+          }}
+        >
+          <option value={undefined}>미선택</option>
+          {[...Array(112).keys()].map((i) => (
+            <option key={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+      </section>
       {ethnicityData && (
-        <>
+        <section>
           민족:
           <select
             onChange={({ target: { value } }) => {
@@ -69,10 +73,10 @@ const PatientTableHeader = ({
               <option key={ethnicity}>{ethnicity}</option>
             ))}
           </select>
-        </>
+        </section>
       )}
       {raceData && (
-        <>
+        <section>
           인종:
           <select
             onChange={({ target: { value } }) => {
@@ -84,9 +88,9 @@ const PatientTableHeader = ({
               <option key={race}>{race}</option>
             ))}
           </select>
-        </>
+        </section>
       )}
-      <>
+      <section>
         사망 여부:
         <select
           onChange={({ target: { value } }) => {
@@ -97,11 +101,19 @@ const PatientTableHeader = ({
           <option>true</option>
           <option>false</option>
         </select>
-      </>
+      </section>
       <style jsx>{`
         header {
-          padding: 20px;
           border-bottom: 1px solid #cccccc;
+        }
+
+        header > section {
+          display: inline-block;
+          padding: 20px;
+        }
+
+        header > section > select {
+          margin-left: 10px;
         }
       `}</style>
     </header>

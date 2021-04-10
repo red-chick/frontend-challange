@@ -11,7 +11,9 @@ const PatientTableFooter = ({
     <footer>
       <section className="left">
         {pageIndex > 1 && (
-          <button onClick={() => setPageIndex((i) => i - 1)}>Prev</button>
+          <button className="prev" onClick={() => setPageIndex((i) => i - 1)}>
+            ← Prev
+          </button>
         )}
         <select
           value={pageIndex}
@@ -26,7 +28,9 @@ const PatientTableFooter = ({
           )}
         </select>
         {data && pageIndex < Math.ceil(data.patient.totalLength / rowSize) && (
-          <button onClick={() => setPageIndex((i) => i + 1)}>Next</button>
+          <button className="next" onClick={() => setPageIndex((i) => i + 1)}>
+            Next →
+          </button>
         )}
       </section>
       <section className="right">
@@ -53,6 +57,14 @@ const PatientTableFooter = ({
 
         footer > section {
           display: inline-block;
+        }
+
+        footer > section.left > button.prev {
+          margin-right: 20px;
+        }
+
+        footer > section.left > button.next {
+          margin-left: 20px;
         }
 
         footer > section.right {

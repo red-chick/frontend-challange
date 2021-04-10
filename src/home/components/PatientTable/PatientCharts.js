@@ -68,6 +68,7 @@ const PatientChart = ({
       <style jsx>{`
         .container {
           border-bottom: 1px solid #cccccc;
+          padding: 20px 0;
         }
 
         .container > section {
