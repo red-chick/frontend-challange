@@ -3,6 +3,10 @@ import Head from "next/head";
 import PatientTable from "../src/home/components/PatientTable";
 
 const Home = () => {
+  if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return <section className="container">env가 설정되지 않았습니다.</section>;
+  }
+
   return (
     <div className="container">
       <Head>

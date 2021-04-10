@@ -26,7 +26,7 @@ npm run dev
 yarn dev
 ```
 
-컴파일이 완료되면 [http://localhost:3000](http://localhost:3000) 으로 접속해 결과물을 확인하실 수 있습니다.
+개발 서버가 실행되면 [http://localhost:3000](http://localhost:3000) 으로 접속해 결과물을 확인하실 수 있습니다.
 
 ## Desciption
 
