@@ -1,6 +1,7 @@
-import useRequest from "../../../common/hooks/useRequest";
-
 const PatientTableHeader = ({
+  ethnicityData,
+  genderData,
+  raceData,
   setGenderFilter,
   setRaceFilter,
   setEthnicityFilter,
@@ -8,10 +9,6 @@ const PatientTableHeader = ({
   setAgeMaxFilter,
   setDeathFilter,
 }) => {
-  const { data: ethnicityData } = useRequest(`/ethnicity/list`);
-  const { data: genderData } = useRequest(`/gender/list`);
-  const { data: raceData } = useRequest(`/race/list`);
-
   const onChangeSelect = (value, setter) => {
     if (value === "미선택") setter(undefined);
     else setter(value);

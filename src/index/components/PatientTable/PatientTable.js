@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import useRequest from "../../../common/hooks/useRequest";
+import PatientChart from "./PatientCharts/PatientCharts";
 
 import PatientTableFooter from "./PatientTableFooter";
 import PatientTableHeader from "./PatientTableHeader";
@@ -59,6 +60,10 @@ const PatientTable = () => {
     )
   );
 
+  const { data: ethnicityData } = useRequest(`/ethnicity/list`);
+  const { data: genderData } = useRequest(`/gender/list`);
+  const { data: raceData } = useRequest(`/race/list`);
+
   if (error) {
     console.error(error);
     return (
@@ -80,12 +85,20 @@ const PatientTable = () => {
   return (
     <section className="container">
       <PatientTableHeader
+        ethnicityData={ethnicityData}
+        genderData={genderData}
+        raceData={raceData}
         setGenderFilter={setGenderFilter}
         setRaceFilter={setRaceFilter}
         setEthnicityFilter={setEthnicityFilter}
         setAgeMinFilter={setAgeMinFilter}
         setAgeMaxFilter={setAgeMaxFilter}
         setDeathFilter={setDeathFilter}
+      />
+      <PatientChart
+        ethnicityData={ethnicityData}
+        genderData={genderData}
+        raceData={raceData}
       />
       <PatientTableView
         data={data}
