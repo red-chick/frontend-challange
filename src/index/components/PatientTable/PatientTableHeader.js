@@ -29,7 +29,9 @@ const PatientTableHeader = ({
           >
             <option value={undefined}>미선택</option>
             {genderData &&
-              genderData.genderList.map((gender) => <option>{gender}</option>)}
+              genderData.genderList.map((gender) => (
+                <option key={gender}>{gender}</option>
+              ))}
           </select>
         </>
       )}
@@ -64,8 +66,8 @@ const PatientTableHeader = ({
             }}
           >
             <option value={undefined}>미선택</option>
-            {ethnicityData.ethnicityList.map((gender) => (
-              <option>{gender}</option>
+            {ethnicityData.ethnicityList.map((ethnicity) => (
+              <option key={ethnicity}>{ethnicity}</option>
             ))}
           </select>
         </>
@@ -79,8 +81,8 @@ const PatientTableHeader = ({
             }}
           >
             <option value={undefined}>미선택</option>
-            {raceData.raceList.map((gender) => (
-              <option>{gender}</option>
+            {raceData.raceList.map((race) => (
+              <option key={race}>{race}</option>
             ))}
           </select>
         </>

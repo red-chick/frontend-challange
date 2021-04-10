@@ -6,6 +6,31 @@ import PatientTableFooter from "./PatientTableFooter";
 import PatientTableHeader from "./PatientTableHeader";
 import PatientTableView from "./PatientTableView";
 
+const getRequestUrl = (
+  pageIndex,
+  rowSize,
+  sortColumn,
+  orderDesc,
+  genderFilter,
+  raceFilter,
+  ethnicityFilter,
+  ageMinFilter,
+  ageMaxFilter,
+  deathFilter
+) => {
+  let requestUrl = `/patient/list?page=${pageIndex}&length=${rowSize}&order_column=${sortColumn}&order_desc=${orderDesc}`;
+
+  if (genderFilter) requestUrl += `&gender=${genderFilter}`;
+  if (raceFilter) requestUrl += `&race=${raceFilter}`;
+  if (ethnicityFilter) requestUrl += `&ethnicity=${ethnicityFilter}`;
+  if (ageMinFilter) requestUrl += `&age_min=${Number(ageMinFilter) - 1}`;
+  if (ageMaxFilter) requestUrl += `&age_max=${Number(ageMaxFilter) + 1}`;
+  if (deathFilter)
+    requestUrl += `&death=${deathFilter === "true" ? true : false}`;
+
+  return requestUrl;
+};
+
 const PatientTable = () => {
   const [pageIndex, setPageIndex] = useState(1);
   const [rowSize, setRowSize] = useState(10);
@@ -19,16 +44,20 @@ const PatientTable = () => {
   const [ageMaxFilter, setAgeMaxFilter] = useState(undefined);
   const [deathFilter, setDeathFilter] = useState(undefined);
 
-  let requestUrl = `/patient/list?page=${pageIndex}&length=${rowSize}&order_column=${sortColumn}&order_desc=${orderDesc}`;
-  if (genderFilter) requestUrl += `&gender=${genderFilter}`;
-  if (raceFilter) requestUrl += `&race=${raceFilter}`;
-  if (ethnicityFilter) requestUrl += `&ethnicity=${ethnicityFilter}`;
-  if (ageMinFilter) requestUrl += `&age_min=${Number(ageMinFilter) - 1}`;
-  if (ageMaxFilter) requestUrl += `&age_max=${Number(ageMaxFilter) + 1}`;
-  if (deathFilter)
-    requestUrl += `&death=${deathFilter === "true" ? true : false}`;
-
-  const { data, error } = useRequest(requestUrl);
+  const { data, error } = useRequest(
+    getRequestUrl(
+      pageIndex,
+      rowSize,
+      sortColumn,
+      orderDesc,
+      genderFilter,
+      raceFilter,
+      ethnicityFilter,
+      ageMinFilter,
+      ageMaxFilter,
+      deathFilter
+    )
+  );
 
   if (error) {
     console.error(error);
@@ -61,9 +90,7 @@ const PatientTable = () => {
       <PatientTableView
         data={data}
         sortColumn={sortColumn}
-        setSortColumn={setSortColumn}
         orderDesc={orderDesc}
-        setOrderDesc={setOrderDesc}
       />
       <PatientTableFooter
         data={data}
