@@ -65,19 +65,9 @@ const PatientTable = () => {
   const { data: raceData } = useRequest(`/race/list`);
 
   if (error) {
-    console.error(error);
     return (
       <section className="container">
         에러가 발생하였습니다. 잠시 후 다시 시도해주세요.
-        <style jsx>{`
-          .container {
-            width: 80%;
-            padding: 240px 0;
-            border: 1px solid #cccccc;
-            border-radius: 8px;
-            text-align: center;
-          }
-        `}</style>
       </section>
     );
   }

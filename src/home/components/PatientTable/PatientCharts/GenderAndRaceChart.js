@@ -1,41 +1,18 @@
 import { useMemo } from "react";
 
-import { getMixTwoString } from "../../../../common/utils";
+import { getChartData, getStatsCount } from "../../../utils/chart";
 
 import PieChart from "../../../../common/components/PieChart";
 
-const getGenderAndRaceCount = (stats, genderAndRaceList) => {
-  return stats.reduce((acc, cur) => {
-    const newAcc = [...acc];
-    const index = genderAndRaceList.indexOf(
-      getMixTwoString(cur.gender, cur.race)
-    );
-    if (newAcc[index] === undefined) newAcc[index] = 0;
-    newAcc[index] += cur.count;
-    return newAcc;
-  }, []);
-};
-
-const getData = (stats, genderAndRaceList) => {
-  return {
-    labels: genderAndRaceList,
-    datasets: [
-      {
-        label: "(성별 + 민족)별 환자 수",
-        data: getGenderAndRaceCount(stats, genderAndRaceList),
-        backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
-        ],
-        hoverOffset: 4,
-      },
-    ],
-  };
-};
-
 const GenderAndRaceChart = ({ stats, genderAndRaceList }) => {
-  const data = useMemo(() => getData(stats, genderAndRaceList), [stats]);
+  const counts = useMemo(
+    () => getStatsCount(stats, genderAndRaceList, ["gender", "race"]),
+    [stats]
+  );
+  const data = useMemo(
+    () => getChartData("(성별 + 민족)별 환자 수", genderAndRaceList, counts),
+    [stats]
+  );
   return <PieChart data={data} />;
 };
 

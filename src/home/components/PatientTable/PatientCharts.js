@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { getMixTwoArray } from "../../../common/utils";
+import { getMixTwoArray } from "../../utils/chart";
 
 import useRequest from "../../../common/hooks/useRequest";
 
@@ -20,7 +20,9 @@ const PatientChart = ({
 }) => {
   const { data, error } = useRequest("/patient/stats");
 
-  if (error) return <div>에러가 발생하였습니다.</div>;
+  if (error) {
+    return <div>에러가 발생하였습니다. 잠시 후 다시 시도해주세요.</div>;
+  }
   if (!data || !ethnicityData || !genderData || !raceData) {
     return <div>로딩중입니다...</div>;
   }

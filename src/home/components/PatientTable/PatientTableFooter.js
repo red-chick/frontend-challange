@@ -1,5 +1,8 @@
 import { memo } from "react";
 
+import PatientTablePagination from "./PatientTableFooter/PatientTablePagination";
+import PatientTableRowSize from "./PatientTableFooter/PatientTableRowSize";
+
 const PatientTableFooter = ({
   data,
   pageIndex,
@@ -10,44 +13,19 @@ const PatientTableFooter = ({
   return (
     <footer>
       <section className="left">
-        {pageIndex > 1 && (
-          <button className="prev" onClick={() => setPageIndex((i) => i - 1)}>
-            ← Prev
-          </button>
-        )}
-        <select
-          value={pageIndex}
-          onChange={(e) => setPageIndex(Number(e.target.value))}
-        >
-          {data ? (
-            [
-              ...Array(Math.ceil(data.patient.totalLength / rowSize)).keys(),
-            ].map((i) => <option key={i + 1}>{i + 1}</option>)
-          ) : (
-            <option>{pageIndex}</option>
-          )}
-        </select>
-        {data && pageIndex < Math.ceil(data.patient.totalLength / rowSize) && (
-          <button className="next" onClick={() => setPageIndex((i) => i + 1)}>
-            Next →
-          </button>
-        )}
+        <PatientTablePagination
+          data={data}
+          pageIndex={pageIndex}
+          rowSize={rowSize}
+          setPageIndex={setPageIndex}
+        />
       </section>
       <section className="right">
-        Row Size:{" "}
-        <select
-          value={rowSize}
-          onChange={(e) => {
-            setPageIndex(1);
-            setRowSize(Number(e.target.value));
-          }}
-        >
-          <option>10</option>
-          <option>20</option>
-          <option>30</option>
-          <option>40</option>
-          <option>50</option>
-        </select>
+        <PatientTableRowSize
+          rowSize={rowSize}
+          setPageIndex={setPageIndex}
+          setRowSize={setRowSize}
+        />
       </section>
       <style jsx>{`
         footer {
@@ -57,14 +35,6 @@ const PatientTableFooter = ({
 
         footer > section {
           display: inline-block;
-        }
-
-        footer > section.left > button.prev {
-          margin-right: 20px;
-        }
-
-        footer > section.left > button.next {
-          margin-left: 20px;
         }
 
         footer > section.right {
