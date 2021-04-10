@@ -10,10 +10,12 @@ const PatientTableHeader = ({
   setAgeMinFilter,
   setAgeMaxFilter,
   setDeathFilter,
+  setPageIndex,
 }) => {
   const onChangeSelect = (value, setter) => {
     if (value === "미선택") setter(undefined);
     else setter(value);
+    setPageIndex(1);
   };
 
   return (

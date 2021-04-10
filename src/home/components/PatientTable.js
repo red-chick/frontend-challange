@@ -94,6 +94,7 @@ const PatientTable = () => {
         setAgeMinFilter={setAgeMinFilter}
         setAgeMaxFilter={setAgeMaxFilter}
         setDeathFilter={setDeathFilter}
+        setPageIndex={setPageIndex}
       />
       <PatientChart
         ethnicityData={ethnicityData}
