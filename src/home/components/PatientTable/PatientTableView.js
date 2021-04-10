@@ -158,6 +158,7 @@ const onClickTr = (e, sortColumn, setSortColumn, orderDesc, setOrderDesc) => {
 
 const onClickItem = async (e, patientDetails, setPatientDetails) => {
   const { id } = e.target.parentNode.dataset;
+  if (patientDetails[id]) return;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/patient/brief/${id}`
   );

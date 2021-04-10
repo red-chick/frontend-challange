@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-import PatientTable from "../src/index/components/PatientTable/PatientTable";
+import PatientTable from "../src/home/components/PatientTable";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="container">
       <Head>
@@ -33,4 +33,6 @@ export default function Home() {
       `}</style>
     </div>
   );
-}
+};
+
+export default Home;

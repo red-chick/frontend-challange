@@ -1,6 +1,8 @@
 import { useMemo } from "react";
-import PieChart from "../../../../common/components/PieChart";
+
 import { getMixTwoString } from "../../../../common/utils";
+
+import PieChart from "../../../../common/components/PieChart";
 
 const getGenderAndEthnicityCount = (stats, genderAndEthnicityList) => {
   return stats.reduce((acc, cur) => {

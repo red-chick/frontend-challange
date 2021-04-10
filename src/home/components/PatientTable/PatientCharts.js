@@ -1,11 +1,14 @@
-import useRequest from "../../../../common/hooks/useRequest";
-import { getMixTwoArray } from "../../../../common/utils";
-import EthnicityChart from "./EthnicityChart";
-import GenderAndRaceChart from "./GenderAndRaceChart";
-import GenderAndEthnicityChart from "./GenderAndEthnicityChart";
-import GenderChart from "./GenderChart";
-import RaceChart from "./RaceChart";
 import { memo } from "react";
+
+import { getMixTwoArray } from "../../../common/utils";
+
+import useRequest from "../../../common/hooks/useRequest";
+
+import EthnicityChart from "./PatientCharts/EthnicityChart";
+import GenderAndRaceChart from "./PatientCharts/GenderAndRaceChart";
+import GenderAndEthnicityChart from "./PatientCharts/GenderAndEthnicityChart";
+import GenderChart from "./PatientCharts/GenderChart";
+import RaceChart from "./PatientCharts/RaceChart";
 
 const PatientChart = ({
   ethnicityData,

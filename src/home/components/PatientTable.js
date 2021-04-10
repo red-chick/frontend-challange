@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import useRequest from "../../../common/hooks/useRequest";
-import PatientChart from "./PatientCharts/PatientCharts";
+import useRequest from "../../common/hooks/useRequest";
 
-import PatientTableFooter from "./PatientTableFooter";
-import PatientTableHeader from "./PatientTableHeader";
-import PatientTableView from "./PatientTableView";
+import PatientChart from "./PatientTable/PatientCharts";
+import PatientTableFooter from "./PatientTable/PatientTableFooter";
+import PatientTableHeader from "./PatientTable/PatientTableHeader";
+import PatientTableView from "./PatientTable/PatientTableView";
 
 const getRequestUrl = (
   pageIndex,
